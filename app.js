@@ -42,7 +42,7 @@ function getTasks() {
     //Add class
     link.className = 'delete-item secondary-content';
     //Add icon html
-    link.innerHTML = '<i class="fa fa-remove"></i>';
+    link.innerHTML = '<i class="fas fa-times"></i>';
     //Append the link to li
     li.appendChild(link);
 
@@ -129,7 +129,11 @@ function removeTaskFromLocalStorage(taskItem) {
 
 //Clear Tasks
 function clearTasks() {
-    taskList.innerHTML = '';
+    // taskList.innerHTML = '';
+    // faster
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
     //Clear from Local Storage
     clearTasksFromLocalStorage();
 }
